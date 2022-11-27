@@ -40,13 +40,13 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-# data "aws_nat_gateway" "new-natgateway" {
-#   subnet_id = aws_subnet.public.id
+data "aws_nat_gateway" "new-natgateway" {
+  subnet_id = aws_subnet.public.id
 
-#   tags = {
-#     Name = "gw NAT"
-#   }
-# }
+  tags = {
+    Name = "gw NAT"
+  }
+}
 
 
 
@@ -76,15 +76,15 @@ resource "aws_route_table_association" "a" {
    route_table_id = aws_route_table.rt.id
 }
 
-#  resource "aws_instance" "instance1" {
-#   ami           = "ami-01f703c132f2b1a20" 
-#   instance_type = "t2.micro"
-#   subnet_id     = aws_subnet.public.id 
-#   key_name = "demo"
-#   tags = {
-#     Name = "HelloWorld"
-#   }
-#  }
+ resource "aws_instance" "instance1" {
+  ami           = "ami-01f703c132f2b1a20" 
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.public.id 
+  key_name = "demo"
+  tags = {
+    Name = "HelloWorld"
+  }
+ }
 
  resource "aws_vpc_endpoint" "s3" {
   vpc_id       = aws_vpc.myVpc.id
